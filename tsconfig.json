@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "module": "es6",
+        "target": "es6",
+        "allowJs": true,
+        "lib": ["ESNext", "dom", "dom.iterable", "scripthost"],
+
+        "moduleResolution": "Node",
+
+        "importHelpers":true,
+        "experimentalDecorators": true,
+        "removeComments": true,
+
+        // Strict Checks
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "alwaysStrict": true,
+        "allowUnreachableCode": false,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+
+        // Linter Checks
+        "noImplicitReturns": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": true
+    },
+    "include": ["./**/*.ts"],
+    "exclude": ["node_modules"],
+    "files": ["src/app.ts"]
+}

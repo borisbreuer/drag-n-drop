@@ -1,0 +1,3 @@
+class Dropzone {
+    constructor() {}
+}
