@@ -48,12 +48,36 @@ body{
         transition: none;
     }
 
-    &.diagonale-ru {
-        background: linear-gradient(135deg, darkgray 0%, darkgray 50%, darken(darkgray, 10%) 50%);
+    &.diagonale-r {
+        background: conic-gradient(
+            darkgray 0deg, darkgray 45deg , 
+            darken(darkgray, 10%) 45deg, darken(darkgray, 10%) 135deg,
+            darkgray 135deg, darkgray 360deg
+        );
     }
 
-    &.diagonale-lo {
-        background: linear-gradient(135deg, darken(darkgray, 10%) 0%, darken(darkgray, 10%) 50%, darkgray 50%);
+    &.diagonale-b {
+        background: conic-gradient(
+            darkgray 0deg, darkgray 135deg , 
+            darken(darkgray, 10%) 135deg, darken(darkgray, 10%) 225deg,
+            darkgray 225deg, darkgray 360deg
+        );
+    }
+
+    &.diagonale-l {
+        background: conic-gradient(
+            darkgray 0deg, darkgray 225deg , 
+            darken(darkgray, 10%) 225deg, darken(darkgray, 10%) 315deg,
+            darkgray 315deg, darkgray 360deg
+        );
+    }
+
+    &.diagonale-t {
+        background: conic-gradient(
+            darken(darkgray, 10%) 0deg, darken(darkgray, 10%) 45deg , 
+            darkgray 45deg, darkgray 315deg,
+            darken(darkgray, 10%) 315deg, darken(darkgray, 10%) 360deg , 
+        );
     }
 }
 
