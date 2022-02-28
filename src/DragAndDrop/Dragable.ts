@@ -9,8 +9,10 @@ export type Options = {
 };
 
 enum SpecialClassNames {
-    behind = 'diagonale-ru',
-    before = 'diagonale-lo',
+    behind = 'diagonale-r',
+    before = 'diagonale-l',
+    bottom = 'diagonale-b',
+    top = 'diagonale-t',
     dragging = 'dragging',
 }
 
@@ -64,21 +66,31 @@ export class Dragable {
             const withinLtoR = this.mouse.x > itemBox.left + window.scrollX && this.mouse.x < itemBox.right + window.scrollX;
             const withinTtoB = this.mouse.y > itemBox.top + window.scrollY && this.mouse.y < itemBox.bottom + window.scrollY;
             const forwardDiagonalCheck = this.mouse.x - itemBox.left > Math.abs(this.mouse.y - (itemBox.top + window.scrollY) - itemBox.height);
-            // const backwardDiagonalCheck = this.mouse.x - itemBox.left > Math.abs(this.mouse.y - (itemBox.top + window.scrollY));
+            const backwardDiagonalCheck = this.mouse.x - itemBox.left > Math.abs(this.mouse.y - (itemBox.top + window.scrollY));
+
+            item.classList.remove(SpecialClassNames.before);
+            item.classList.remove(SpecialClassNames.behind);
+            item.classList.remove(SpecialClassNames.bottom);
+            item.classList.remove(SpecialClassNames.top);
 
             if (withinLtoR && withinTtoB) {
-                if (forwardDiagonalCheck) {
+                if (forwardDiagonalCheck && backwardDiagonalCheck) {
+                    // right
                     this.placeElement(item, this.placeHolder, 'afterend');
                     item.classList.add(SpecialClassNames.behind);
-                    item.classList.remove(SpecialClassNames.before);
-                } else {
+                } else if (!forwardDiagonalCheck && !backwardDiagonalCheck) {
+                    // left
                     this.placeElement(item, this.placeHolder, 'beforebegin');
                     item.classList.add(SpecialClassNames.before);
-                    item.classList.remove(SpecialClassNames.behind);
+                } else if (forwardDiagonalCheck && !backwardDiagonalCheck) {
+                    // bottom
+                    // this.placeElement(item, this.placeHolder, 'bottom');
+                    item.classList.add(SpecialClassNames.bottom);
+                } else if (!forwardDiagonalCheck && backwardDiagonalCheck) {
+                    // top
+                    // this.placeElement(item, this.placeHolder, 'top');
+                    item.classList.add(SpecialClassNames.top);
                 }
-            } else {
-                item.classList.remove(SpecialClassNames.behind);
-                item.classList.remove(SpecialClassNames.before);
             }
         });
     }
