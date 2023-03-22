@@ -14,9 +14,7 @@ const config = {
     clean: true
   },
   devServer: {
-    open: false,
-    host: "localhost",
-    port: 3000,
+    port: 3030,
   },
   devtool: false,
   optimization: {
